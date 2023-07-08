@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box>
             <img
-              src={require("../../assets/lucs - cópia.png")}
+              src={require("../../assets/logo-1.png")}
               alt="Imagem"
               style={{
                 maxWidth: "100px",
