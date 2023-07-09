@@ -6,13 +6,10 @@ import {
   Drawer,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
-  Typography,
   styled,
   Box,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 
 const TransparentAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -39,7 +36,7 @@ const Navbar: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <TransparentAppBar position="fixed">
+      <TransparentAppBar position="absolute">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box>
             <img

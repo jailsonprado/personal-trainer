@@ -31,7 +31,6 @@ const Header: React.FC = () => {
             container
             xl={12}
             xs={12}
-            md={6}
             direction="row"
             alignItems="center"
             spacing={2}
