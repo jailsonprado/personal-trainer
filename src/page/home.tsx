@@ -1,8 +1,9 @@
-import Contact from "../components/contact";
 import About from "../components/about";
 import WhatsAppButton from "../components/button-wpp";
 import Header from "../components/header";
 import Navbar from "../components/navbar";
+import FormStepper from "../components/contact";
+import Photos from "components/photos";
 
 const Home: React.FC = () => (
   <div>
@@ -10,7 +11,8 @@ const Home: React.FC = () => (
     <Header />
     <About />
     <WhatsAppButton />
-    {/* <Contact /> */}
+    <Photos />
+    <FormStepper />
   </div>
 );
 

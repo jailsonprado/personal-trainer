@@ -2,7 +2,14 @@ import { Grid, Typography } from "@mui/material";
 
 const About: React.FC = () => {
   return (
-    <Grid container justifyContent="center" height="100vh" mt={2}>
+    <Grid
+      container
+      justifyContent="center"
+      height="600px"
+      mt={2}
+      padding={2}
+      mb={20}
+    >
       <Grid item xs={12} md={6}>
         <Grid container direction={"column"} alignItems={"center"} spacing={1}>
           <Grid item>

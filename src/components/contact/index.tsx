@@ -1,263 +1,148 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
-import {
-  Button,
-  Grid,
-  Step,
-  StepButton,
-  StepContent,
-  Stepper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+import InputMask from "react-input-mask";
 
 import { useAppDispatch, useAppSelector } from "redux/redux";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+
 import {
-  addType,
-  setActiveStep,
-  setCompletedSteps,
+  addName,
+  addBirthday,
+  addCellPhone,
+  addEmail,
 } from "redux/contact/type-contact";
+import { InputForm, StyledButton } from "./styles";
 
 const FormStepper: React.FC = () => {
-  const dispach = useAppDispatch();
-  const { contact, activeStep, completedSteps } = useAppSelector(
+  const dispatch = useAppDispatch();
+  const { contact } = useAppSelector(
     (rootReducer) => rootReducer?.typeSlice || null
   );
 
-  const steps = [
-    {
-      label: "Step 1",
-      content: (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              label="Nome"
-              fullWidth
-              value={contact.nome}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    nome: e.target.value,
-                    dataNascimento: "",
-                    email: "",
-                    telefone: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Data de Nascimento"
-              fullWidth
-              value={contact.dataNascimento}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    dataNascimento: e.target.value,
-                    nome: "",
-                    email: "",
-                    telefone: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Email"
-              fullWidth
-              value={contact.email}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    email: e.target.value,
-                    nome: "",
-                    dataNascimento: "",
-                    telefone: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Telefone"
-              fullWidth
-              value={contact.telefone}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    telefone: e.target.value,
-                    nome: "",
-                    dataNascimento: "",
-                    email: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-        </Grid>
-      ),
-    },
-    {
-      label: "Step 2",
-      content: (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              label="Já treinou antes? Se sim, quanto tempo?"
-              fullWidth
-              value={contact.treinouAntes}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    treinouAntes: e.target.value,
-                    nome: "",
-                    dataNascimento: "",
-                    email: "",
-                    telefone: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Tem algum problema de saúde?"
-              fullWidth
-              value={contact.problemaSaude}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    problemaSaude: e.target.value,
-                    nome: "",
-                    dataNascimento: "",
-                    email: "",
-                    telefone: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    objetivo: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Qual seu objetivo?"
-              fullWidth
-              value={contact.objetivo}
-              onChange={(e) =>
-                dispach(
-                  addType({
-                    objetivo: e.target.value,
-                    nome: "",
-                    dataNascimento: "",
-                    email: "",
-                    telefone: "",
-                    treinouAntes: "",
-                    tempoTreino: "",
-                    problemaSaude: "",
-                  })
-                )
-              }
-            />
-          </Grid>
-        </Grid>
-      ),
-    },
-    {
-      label: "Step 3",
-      content: (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant="h6">Resumo:</Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              Nome: {contact.nome}
-              <br />
-              Data de Nascimento: {contact.dataNascimento}
-              <br />
-              Email: {contact.email}
-              <br />
-              Telefone: {contact.telefone}
-              <br />
-              Já treinou antes? Se sim, quanto tempo? {contact.tempoTreino}
-              <br />
-              Tem algum problema de saúde? {contact.problemaSaude}
-              <br />
-              Qual seu objetivo? {contact.objetivo}
-            </Typography>
-          </Grid>
-        </Grid>
-      ),
-    },
-  ];
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
 
-  const handleStepClick = (step: number) => {
-    dispach(setActiveStep(step));
-  };
+    const { nome, dataNascimento, email, telefone } = contact;
 
-  const handleNext = () => {
-    if (activeStep < steps.length - 1) {
-      dispach(setActiveStep(activeStep + 1));
-      dispach(setCompletedSteps(new Set([...completedSteps, activeStep])));
-    }
-  };
+    const url = `https://api.whatsapp.com/send?phone=5528999636120&text=Olá Lucas%0AMe chamo%0A${nome}. email:%0A${email}%0ATelefone:%0A${telefone}%0AE Data de nascimento:%0A${dataNascimento}`;
 
-  const handleBack = () => {
-    dispach(setActiveStep(activeStep - 1));
+    window.open(url);
   };
 
   return (
-    <Grid container justifyContent="center" mt={2} bgcolor={"#fff"}>
-      <Grid item xs={12} md={8}>
-        <Stepper activeStep={activeStep} orientation="vertical">
-          {steps.map((step, index) => (
-            <Step key={index} completed={completedSteps.has(index)}>
-              <StepButton onClick={() => handleStepClick(index)}>
-                {step.label}
-              </StepButton>
-              <StepContent>
-                {step.content}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  disabled={activeStep === steps.length - 1}
-                >
-                  Próximo
-                </Button>
-                {activeStep !== 0 && (
-                  <Button variant="contained" onClick={handleBack}>
-                    Voltar
-                  </Button>
-                )}
-              </StepContent>
-            </Step>
-          ))}
-        </Stepper>
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      <Grid item xs={10} md={8} lg={6} xl={4}>
+        <Box bgcolor="#000000" p={3} borderRadius={3}>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            mb={2}
+          >
+            <Typography variant="h4" color="#fff">
+              Contato
+            </Typography>
+            <MailOutlineIcon
+              sx={{
+                color: "red",
+                width: "100px",
+                height: "40px",
+                marginTop: "5px",
+              }}
+            />
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <InputForm
+                label="Nome"
+                fullWidth
+                value={contact.nome}
+                onChange={(e) => dispatch(addName(e.target.value))}
+                autoComplete="off"
+                InputProps={{
+                  style: {
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <InputMask
+                mask="99/99/9999"
+                placeholder="Data de Nascimento"
+                value={contact.dataNascimento}
+                onChange={(e) => dispatch(addBirthday(e.target.value))}
+              >
+                <InputForm
+                  label="Data de Nascimento"
+                  fullWidth
+                  InputProps={{
+                    style: { color: "white" },
+                    autoComplete: "off",
+                  }}
+                  InputLabelProps={{
+                    style: { color: "#fff" },
+                  }}
+                />
+              </InputMask>
+            </Grid>
+            <Grid item xs={12}>
+              <InputForm
+                label="Email"
+                fullWidth
+                autoComplete="none"
+                value={contact.email}
+                onChange={(e) => dispatch(addEmail(e.target.value))}
+                InputProps={{
+                  style: { color: "white" },
+                  autoComplete: "off",
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <InputMask
+                mask="(99) 99999-9999"
+                placeholder="Telefone"
+                value={contact.telefone}
+                onChange={(e) => dispatch(addCellPhone(e.target.value))}
+              >
+                <InputForm
+                  label="Telefone"
+                  fullWidth
+                  InputProps={{
+                    style: { color: "white" },
+                    autoComplete: "off",
+                  }}
+                  InputLabelProps={{
+                    style: { color: "#fff" },
+                  }}
+                />
+              </InputMask>
+            </Grid>
+            <Grid item mt={2} mb={4}>
+              <StyledButton
+                variant="contained"
+                endIcon={<WhatsAppIcon sx={{ width: "50px", color: "#fff" }} />}
+                onClick={handleSubmit}
+              >
+                <Typography color="#fff">Enviar</Typography>
+              </StyledButton>
+            </Grid>
+          </Grid>
+        </Box>
       </Grid>
     </Grid>
   );

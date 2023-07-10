@@ -5,16 +5,10 @@ interface Contact {
   dataNascimento: string;
   email: string;
   telefone: string;
-  treinouAntes: string;
-  tempoTreino: string;
-  problemaSaude: string;
-  objetivo: string;
 }
 
 interface InitialState {
   contact: Contact;
-  activeStep: number;
-  completedSteps: Set<number>;
 }
 
 const initialState: InitialState = {
@@ -23,30 +17,28 @@ const initialState: InitialState = {
     dataNascimento: "",
     email: "",
     telefone: "",
-    treinouAntes: "",
-    tempoTreino: "",
-    problemaSaude: "",
-    objetivo: "",
   },
-  activeStep: 0,
-  completedSteps: new Set<number>(),
 };
 
 const typeSlice = createSlice({
   name: "type",
   initialState,
   reducers: {
-    addType: (state, action: PayloadAction<Contact>) => {
-      state.contact = action.payload;
+    addName: (state, action) => {
+      state.contact.nome = action.payload;
     },
-    setActiveStep: (state, action: PayloadAction<number>) => {
-      state.activeStep = action.payload;
+    addBirthday: (state, action) => {
+      state.contact.dataNascimento = action.payload;
     },
-    setCompletedSteps: (state, action: PayloadAction<Set<number>>) => {
-      state.completedSteps = action.payload;
+    addEmail: (state, action) => {
+      state.contact.email = action.payload;
+    },
+    addCellPhone: (state, action) => {
+      state.contact.telefone = action.payload;
     },
   },
 });
 
-export const { addType, setActiveStep, setCompletedSteps } = typeSlice.actions;
+export const { addName, addBirthday, addCellPhone, addEmail } =
+  typeSlice.actions;
 export default typeSlice.reducer;

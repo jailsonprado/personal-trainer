@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { StyledButton } from "components/contact/styles";
 
 const Header: React.FC = () => {
   return (
@@ -30,7 +31,6 @@ const Header: React.FC = () => {
           <Grid
             container
             xl={12}
-            xs={12}
             direction="row"
             alignItems="center"
             spacing={2}
@@ -59,17 +59,7 @@ const Header: React.FC = () => {
           </Grid>
 
           <Grid item>
-            <Paper
-              elevation={2}
-              style={{
-                backgroundColor: "#000000ae",
-                padding: "10px 20px",
-                border: "1px solid #53F0B847",
-                borderRadius: "10px",
-                width: "200px",
-                marginTop: "-10px",
-              }}
-            >
+            <StyledButton variant="contained">
               <Typography
                 fontFamily="sans-serif"
                 color="white"
@@ -77,7 +67,7 @@ const Header: React.FC = () => {
               >
                 Contato
               </Typography>
-            </Paper>
+            </StyledButton>
           </Grid>
         </Grid>
       </Grid>
