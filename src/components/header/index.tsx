@@ -7,7 +7,14 @@ import { Link } from "components/navbar/styles";
 
 const Header: React.FC = () => {
   return (
-    <Container container id="home" zIndex={"9999"} mb={4}>
+    <Container
+      container
+      id="home"
+      zIndex={"9999"}
+      mb={4}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
       <Grid item xs={12} md={6}>
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Grid item>
