@@ -36,6 +36,7 @@ const FormStepper: React.FC = () => {
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
+      id="contact"
     >
       <Grid item xs={10} md={8} lg={6} xl={4}>
         <Box bgcolor="#000000" p={3} borderRadius={3}>

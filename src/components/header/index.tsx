@@ -2,14 +2,22 @@ import React from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { StyledButton } from "components/contact/styles";
+import { Container, StyledImage } from "./styles";
 
 const Header: React.FC = () => {
   return (
-    <Grid container alignItems="center" justifyContent="center" height="100vh">
+    <Container
+      container
+      alignItems="center"
+      justifyContent="center"
+      height="100vh"
+      mt={-10}
+      id="home"
+    >
       <Grid item xs={12} md={6}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Grid item mt={-30}>
-            <img
+          <Grid item>
+            <StyledImage
               src={require("../../assets/cf7b4cb8-22f4-44b4-9ae0-a2fe6b461db1-removebg (1) 2.png")}
               alt="Imagem"
               style={{
@@ -25,6 +33,7 @@ const Header: React.FC = () => {
               style={{
                 maxWidth: "200px",
                 maxHeight: "100%",
+                zIndex: "10000",
               }}
             />
           </Grid>
@@ -71,7 +80,7 @@ const Header: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 };
 

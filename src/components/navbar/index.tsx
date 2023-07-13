@@ -10,6 +10,7 @@ import {
   styled,
   Box,
 } from "@mui/material";
+import { Link } from "./styles";
 
 const TransparentAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -25,7 +26,7 @@ const MenuDrawer = styled(Drawer)(({ theme }) => ({
   },
 }));
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = ({ props }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuIconRotated, setMenuIconRotated] = useState(false);
 
@@ -80,29 +81,37 @@ const Navbar: React.FC = () => {
         />
         <List>
           <ListItem>
-            <ListItemText
-              color="#fff"
-              primary="Home"
-              primaryTypographyProps={{ color: "#fff" }}
-            />
+            <Link href="#home" className="page-scroll" onClick={toggleMenu}>
+              <ListItemText
+                color="#fff"
+                primary="Home"
+                primaryTypographyProps={{ color: "#fff" }}
+              />
+            </Link>
           </ListItem>
           <ListItem>
-            <ListItemText
-              primary="Sobre mim"
-              primaryTypographyProps={{ color: "#fff" }}
-            />
+            <Link href="#about" className="page-scroll" onClick={toggleMenu}>
+              <ListItemText
+                primary="Sobre mim"
+                primaryTypographyProps={{ color: "#fff" }}
+              />
+            </Link>
           </ListItem>
           <ListItem>
-            <ListItemText
-              primary="Fotos"
-              primaryTypographyProps={{ color: "#fff" }}
-            />
+            <Link href="#photos" className="page-scroll" onClick={toggleMenu}>
+              <ListItemText
+                primary="Fotos"
+                primaryTypographyProps={{ color: "#fff" }}
+              />
+            </Link>
           </ListItem>
           <ListItem>
-            <ListItemText
-              primary="Contato"
-              primaryTypographyProps={{ color: "#fff" }}
-            />
+            <Link href="#contact" className="page-scroll" onClick={toggleMenu}>
+              <ListItemText
+                primary="Contato"
+                primaryTypographyProps={{ color: "#fff" }}
+              />
+            </Link>
           </ListItem>
         </List>
       </MenuDrawer>
