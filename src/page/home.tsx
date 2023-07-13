@@ -7,7 +7,6 @@ import Header from "components/header";
 import Navbar from "components/navbar";
 import CustomCarousel from "components/photos";
 import SmoothScroll from "smooth-scroll";
-import { Settings } from "react-slick";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
