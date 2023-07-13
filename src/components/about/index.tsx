@@ -10,8 +10,9 @@ const About: React.FC = () => {
       p={2}
       mb={40}
       id="about"
+      alignItems={"center"}
     >
-      <Grid item xs={12} md={6}>
+      <Grid item xs={10} md={6}>
         <Grid container direction="column" alignItems="center" spacing={1}>
           <Grid item>
             <img
@@ -23,14 +24,16 @@ const About: React.FC = () => {
               }}
             />
           </Grid>
-          <Typography
-            mt={-5}
-            fontFamily="sans-serif"
-            fontSize={24}
-            color="white"
-          >
-            Sobre mim
-          </Typography>
+          <Grid item xs={10}>
+            <Typography
+              mt={-5}
+              fontFamily="sans-serif"
+              fontSize={24}
+              color="white"
+            >
+              Sobre mim
+            </Typography>
+          </Grid>
 
           <Typography color="#ffffff" textAlign="center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -44,16 +47,7 @@ const About: React.FC = () => {
         </Grid>
         <Grid container spacing={2} mt={2}>
           <Grid item xs={12}>
-            <Box
-              display="flex"
-              justifyContent="center"
-              gap={2}
-              sx={{
-                overflowX: "auto",
-                backgroundImage:
-                  "linear-gradient(205deg, hsl(0deg 96.77% 26.9%) 0%, hsl(0deg 0% 0%) 100%);",
-              }}
-            >
+            <Box display="flex" justifyContent="center" gap={2}>
               <Box flexShrink={0}>
                 <img
                   src={require("../../assets/fotos/antes.png")}

@@ -16,6 +16,7 @@ const TransparentAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
   boxShadow: "none",
   width: "100%",
+  height: "50px",
 }));
 
 const MenuDrawer = styled(Drawer)(({ theme }) => ({
@@ -36,8 +37,8 @@ const Navbar: React.FC = ({ props }: any) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <TransparentAppBar position="absolute">
+    <Box sx={{ flexGrow: 0 }}>
+      <TransparentAppBar position="fixed">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box>
             <img

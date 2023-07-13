@@ -3,17 +3,11 @@ import { Grid, Paper, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { StyledButton } from "components/contact/styles";
 import { Container, StyledImage } from "./styles";
+import { Link } from "components/navbar/styles";
 
 const Header: React.FC = () => {
   return (
-    <Container
-      container
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      mt={-10}
-      id="home"
-    >
+    <Container container id="home" zIndex={"9999"} mb={4}>
       <Grid item xs={12} md={6}>
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Grid item>
@@ -69,13 +63,15 @@ const Header: React.FC = () => {
 
           <Grid item>
             <StyledButton variant="contained">
-              <Typography
-                fontFamily="sans-serif"
-                color="white"
-                textAlign="center"
-              >
-                Contato
-              </Typography>
+              <Link href="#contact">
+                <Typography
+                  fontFamily="sans-serif"
+                  color="white"
+                  textAlign="center"
+                >
+                  Contato
+                </Typography>
+              </Link>
             </StyledButton>
           </Grid>
         </Grid>

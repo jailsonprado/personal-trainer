@@ -1,44 +1,50 @@
-import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { useEffect, useRef, useState } from "react";
 import about from "../../assets/fotos/about.jpeg";
 import photo2 from "../../assets/fotos/1.png";
 import photo3 from "../../assets/fotos/2.png";
 import photo4 from "../../assets/fotos/profile.png";
+import { motion } from "framer-motion";
 
-import { Grid } from "@mui/material";
+import "./styles.css";
+import { Typography } from "@mui/material";
 
 const images = [about, photo2, photo3, photo4];
 
-function CustomCarousel() {
+const CustomCarousel: React.FC = () => {
+  const carousel = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(carousel.current?.scrollWidth! - carousel.current?.offsetWidth!);
+  }, []);
+
   return (
-    <Grid container justifyContent="center" mt={5} id="photos">
-      <Grid item xs={12} sm={10} md={8} lg={6}>
-        <Carousel
-          showArrows={true}
-          showStatus={false}
-          showThumbs={false}
-          infiniteLoop={true}
-          autoPlay={true}
-          interval={3000}
-          transitionTime={500}
-          swipeable={true}
-          emulateTouch={true}
-          centerMode={true}
-          centerSlidePercentage={50}
-          dynamicHeight={false}
-          verticalSwipe="natural"
-          useKeyboardArrows={true}
+    <div className="carousel-container">
+      <Typography textAlign={"center"} color={"#fff"}>
+        Galeria de fotos
+      </Typography>
+      <motion.div
+        ref={carousel}
+        className="carousel"
+        whileTap={{ cursor: "grabbing" }}
+      >
+        <motion.div
+          className="inner"
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          {images.map((image, index) => (
-            <div key={index}>
-              <img src={image} alt="" style={{ maxHeight: 300 }} />
-            </div>
+          {images.map((image) => (
+            <motion.div className="item" key={image}>
+              <img src={image} alt="Text alt" />
+            </motion.div>
           ))}
-        </Carousel>
-      </Grid>
-    </Grid>
+        </motion.div>
+      </motion.div>
+    </div>
   );
-}
+};
 
 export default CustomCarousel;
