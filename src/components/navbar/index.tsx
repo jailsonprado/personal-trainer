@@ -27,7 +27,11 @@ const MenuDrawer = styled(Drawer)(({ theme }) => ({
   },
 }));
 
-const Navbar: React.FC = ({ props }: any) => {
+type Props = {
+  disabled: boolean
+}
+
+const Navbar: React.FC<Props> = ({disabled}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuIconRotated, setMenuIconRotated] = useState(false);
 
@@ -54,6 +58,7 @@ const Navbar: React.FC = ({ props }: any) => {
             <IconButton
               edge="end"
               aria-label="menu"
+              disabled={disabled}
               onClick={toggleMenu}
               sx={{
                 transform: menuIconRotated ? "rotate(90deg)" : "rotate(0)",

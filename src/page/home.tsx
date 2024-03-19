@@ -15,7 +15,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const Home: React.FC = () => (
   <Grid container direction="column">
-    <Navbar />
+    <Navbar disabled={false} />
     <Grid
       item
       xs={10}
