@@ -46,7 +46,7 @@ const Contact: React.FC = () => (
           Lucas Segal
         </Typography>
         <Typography color={"white"} textAlign={"center"} fontSize={16}>
-          Venha para meu time e construa resultados de verdade
+          Venha para MEU TIME e construa resultados de verdade
         </Typography>
       </Grid>
     </Grid>
