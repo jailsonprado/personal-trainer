@@ -46,7 +46,7 @@ const Contact: React.FC = () => (
           Lucas Segal
         </Typography>
         <Typography color={"white"} textAlign={"center"} fontSize={16}>
-          Venha para MEU TIME e construa resultados de verdade
+         Buscando um estilo de vida melhor a cada dia 
         </Typography>
       </Grid>
     </Grid>
@@ -69,7 +69,7 @@ const Contact: React.FC = () => (
           color="primary"
           href="https://api.whatsapp.com/send?phone=5528999636120&text=Olá Lucas%0AGostaria de saber mais sobre sua consultoria e fazer parte do Team Lucas Segal"
         >
-          Entre para o time
+          ME CHAME NO WHATSAPP
         </StyledButton>
       </Grid>
       <Grid item>
